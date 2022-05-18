@@ -8,7 +8,7 @@ const Upload = () => {
     const description = event.target.description.value;
     const user = { name, description };
     // send data to the server
-    fetch("http://localhost:5000/user", {
+    fetch("https://aqueous-crag-86187.herokuapp.com/user", {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
