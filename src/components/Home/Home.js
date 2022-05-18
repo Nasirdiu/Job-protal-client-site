@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -11,7 +12,6 @@ const Home = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure you want to delete");
     if (proceed) {
-      console.log("deleting user id", id);
       const url = `https://aqueous-crag-86187.herokuapp.com/user/${id}`;
       fetch(url, {
         method: "DELETE",
@@ -30,15 +30,17 @@ const Home = () => {
     <div className="text-center">
       <h1>All user data:{users.length}</h1>
       {users.map((user) => (
-        <li key={user._id}>
-          {user.name}:{user.description}{" "}
-          <button
-            className="btn btn-info m-2"
-            onClick={() => handleDelete(user._id)}
-          >
-            Delete
-          </button>
-        </li>
+        <div key={user._id} className='m-3 d-flex justify-content-center'>
+          <Card style={{ width: "18rem" }}>
+            <Card.Body>
+              <Card.Title>{user.name}</Card.Title>
+              <Card.Text>{user.description}</Card.Text>
+              <Button onClick={() => handleDelete(user._id)} variant="primary">
+               Delete
+              </Button>
+            </Card.Body>
+          </Card>
+        </div>
       ))}
     </div>
   );

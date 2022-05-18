@@ -17,7 +17,6 @@ const Upload = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Success:", data);
         alert("add user successfully");
         event.target.reset();
       });
